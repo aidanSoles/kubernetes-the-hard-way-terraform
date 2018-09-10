@@ -1,0 +1,16 @@
+{
+  "CN": "system:kube-controller-manager",
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "C": "🤘",
+      "L": "SLIM JIM",
+      "O": "system:kube-controller-manager",
+      "OU": "OHH YYYEEEEAAAAAHHHHHH!!!!!!!!",
+      "ST": "Macho Land"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+gcloud config set compute/region us-west1 && \
+K8S_PUBLIC_IP=$(gcloud compute addresses describe k8s-staticip --region $(gcloud config get-value compute/region) --format 'value(address)') && \
+kubectl config set-cluster k8s-the-hard-way --certificate-authority=$(pwd)/certs/ca.pem --embed-certs=true --server="https://${K8S_PUBLIC_IP}:6443" && \
+kubectl config set-credentials admin --client-certificate=$(pwd)/certs/admin.pem --client-key=$(pwd)/certs/admin-key.pem && \
+kubectl config set-context k8s-the-hard-way-tf --user=admin --cluster=k8s-the-hard-way && \
+kubectl config use-context k8s-the-hard-way-tf

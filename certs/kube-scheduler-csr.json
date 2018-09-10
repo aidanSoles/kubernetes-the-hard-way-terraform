@@ -1,0 +1,16 @@
+{
+  "CN": "system:kube-scheduler",
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "C": "Randyville",
+      "L": "SLIM JIM",
+      "O": "system:kube-scheduler",
+      "OU": "OHH YYYEEEEAAAAAHHHHHH!!!!!!!!",
+      "ST": "Macho Land"
+    }
+  ]
+}
