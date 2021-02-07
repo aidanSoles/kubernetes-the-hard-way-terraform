@@ -79,7 +79,7 @@ resource "google_compute_subnetwork" "k8s_subnet" {
 
 resource "google_compute_route" "k8s_worker0route" {
   name        = "k8s-worker0route"
-  depends_on  = ["google_compute_instance.k8s_worker"]
+  depends_on = [google_compute_instance.k8s_worker]
   dest_range  = "10.200.0.0/24"
   network     = google_compute_network.k8s_network.self_link
   next_hop_ip = google_compute_instance.k8s_worker.0.network_interface.0.network_ip
@@ -89,7 +89,7 @@ resource "google_compute_route" "k8s_worker0route" {
 resource "google_compute_route" "k8s_worker1route" {
   name        = "k8s-worker1route"
   dest_range  = "10.200.1.0/24"
-  depends_on  = ["google_compute_instance.k8s_worker"]
+  depends_on = [google_compute_instance.k8s_worker]
   network     = google_compute_network.k8s_network.self_link
   next_hop_ip = google_compute_instance.k8s_worker.1.network_interface.0.network_ip
   priority    = 100
@@ -98,7 +98,7 @@ resource "google_compute_route" "k8s_worker1route" {
 resource "google_compute_route" "k8s_worker2route" {
   name        = "k8s-worker2route"
   dest_range  = "10.200.2.0/24"
-  depends_on  = ["google_compute_instance.k8s_worker"]
+  depends_on = [google_compute_instance.k8s_worker]
   network     = google_compute_network.k8s_network.self_link
   next_hop_ip = google_compute_instance.k8s_worker.2.network_interface.0.network_ip
   priority    = 100
