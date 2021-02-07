@@ -3,29 +3,29 @@ resource "google_compute_instance" "k8s_controller" {
     auto_delete = true
 
     initialize_params {
-      image = "${var.controller_image}"
-      size  = "${var.controller_size}"
+      image = var.controller_image
+      size  = var.controller_size
     }
   }
 
   can_ip_forward = true
-  count          = "${var.controller_count}"
-  machine_type   = "${var.controller_type}"
+  count          = var.controller_count
+  machine_type   = var.controller_type
   name           = "k8s-controller${count.index}"
 
   network_interface {
     access_config = {}
-    subnetwork    = "${google_compute_subnetwork.k8s_subnet.name}"
+    subnetwork    = google_compute_subnetwork.k8s_subnet.name
   }
 
   metadata {
-    creator = "${var.user}"
+    creator = var.user
   }
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -35,8 +35,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -46,8 +46,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -57,8 +57,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -68,8 +68,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -79,8 +79,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -90,8 +90,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -101,8 +101,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -112,8 +112,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -123,8 +123,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -134,8 +134,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -145,8 +145,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -156,8 +156,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -167,8 +167,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -178,8 +178,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -189,8 +189,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -200,8 +200,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -211,8 +211,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -222,8 +222,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -233,8 +233,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -244,8 +244,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -255,8 +255,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -266,8 +266,8 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "remote-exec" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -299,30 +299,30 @@ resource "google_compute_instance" "k8s_worker" {
     auto_delete = true
 
     initialize_params {
-      image = "${var.worker_image}"
-      size  = "${var.worker_size}"
+      image = var.worker_image
+      size  = var.worker_size
     }
   }
 
   can_ip_forward = true
-  count          = "${var.worker_count}"
-  machine_type   = "${var.worker_type}"
+  count          = var.worker_count
+  machine_type   = var.worker_type
   name           = "k8s-worker${count.index}"
 
   network_interface {
     access_config = {}
-    subnetwork    = "${google_compute_subnetwork.k8s_subnet.name}"
+    subnetwork    = google_compute_subnetwork.k8s_subnet.name
   }
 
   metadata {
-    creator  = "${var.user}"
+    creator  = var.user
     pod-cidr = "10.200.${count.index}.0/24"
   }
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -332,8 +332,8 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -343,8 +343,8 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -354,8 +354,8 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -365,8 +365,8 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -376,8 +376,8 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -387,8 +387,8 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -398,8 +398,8 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -409,8 +409,8 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -420,8 +420,8 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -431,8 +431,8 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -446,8 +446,8 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -457,8 +457,8 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "remote-exec" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
