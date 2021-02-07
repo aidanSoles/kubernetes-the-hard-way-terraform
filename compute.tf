@@ -14,11 +14,11 @@ resource "google_compute_instance" "k8s_controller" {
   name           = "k8s-controller${count.index}"
 
   network_interface {
-    access_config = {}
-    subnetwork    = google_compute_subnetwork.k8s_subnet.name
+    access_config {}
+    subnetwork = google_compute_subnetwork.k8s_subnet.name
   }
 
-  metadata {
+  metadata = {
     creator = var.user
   }
 
@@ -310,11 +310,11 @@ resource "google_compute_instance" "k8s_worker" {
   name           = "k8s-worker${count.index}"
 
   network_interface {
-    access_config = {}
-    subnetwork    = google_compute_subnetwork.k8s_subnet.name
+    access_config {}
+    subnetwork = google_compute_subnetwork.k8s_subnet.name
   }
 
-  metadata {
+  metadata = {
     creator  = var.user
     pod-cidr = "10.200.${count.index}.0/24"
   }
