@@ -24,7 +24,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -36,7 +36,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -48,7 +48,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -60,7 +60,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -72,7 +72,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -84,7 +84,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -96,7 +96,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -108,7 +108,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -120,7 +120,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -132,7 +132,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -144,7 +144,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -156,7 +156,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -168,7 +168,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -180,7 +180,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -192,7 +192,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -204,7 +204,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -216,7 +216,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -228,7 +228,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -240,7 +240,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -252,7 +252,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -264,7 +264,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -276,7 +276,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -288,7 +288,7 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "remote-exec" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -344,7 +344,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -356,7 +356,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -368,7 +368,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -380,7 +380,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -392,7 +392,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -404,7 +404,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -416,7 +416,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -428,7 +428,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -440,7 +440,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -452,7 +452,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -464,7 +464,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -480,7 +480,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
@@ -492,7 +492,7 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "remote-exec" {
     connection {
-      host        = "self.network_interface.0.access_config.0.nat_ip"
+      host        = self.network_interface.0.access_config.0.nat_ip
       private_key = file(var.ssh_path)
       user        = var.user
       type        = "ssh"
