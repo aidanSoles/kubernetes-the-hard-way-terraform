@@ -114,6 +114,6 @@ resource "google_compute_target_pool" "k8s_lbtartgetpool" {
   ]
 
   health_checks = [
-    "google_compute_http_health_check.k8s_lbhealthcheck.name",
+    google_compute_http_health_check.k8s_lbhealthcheck.name,
   ]
 }
