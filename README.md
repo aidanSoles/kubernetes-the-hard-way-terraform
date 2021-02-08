@@ -24,7 +24,7 @@
 1. Set your Google Application credentials using: `export GOOGLE_APPLICATION_CREDENTIALS=<path-to-your-credentials-json>`.
 1. Go to the `certs` directory, and run the `create-ca.sh` script, followed by the `gen-certs.sh` script. This will create a self-signed CA, and create/sign all of the generated certs with that CA.
 1. Go to the `configs` directory, and run the `gen-config.sh` script. This will create the encryption configuration for the new Kubernetes cluster.
-1. Add a public `ssh` key to your project metadata (`Compute Engine` > `Metadata` > `SSH Keys`) using the format `<protocol> <key-blob> <username@example.com>`. `username` must match the `var.user` value in variables.tf. The virtual machines you spin up will inherit this public key and allow the `remote-exec` provisioners to work.
+1. Add a public `ssh` key to your project metadata (`Compute Engine` > `Metadata` > `SSH Keys`) using the format `<protocol> <key-blob> <username@example.com>`. `username` in the key comment must match the `var.user` value in variables.tf. The virtual machines you spin up will inherit this public key and allow the `remote-exec` provisioners to work.
 1. Fill in the variables in `variables.tf` that have `TODO` next to them.
 1. **OPTIONAL**: Edit the GitHub usernames in `scripts/add-ssh-keys.sh` to give trusted colleagues/friends access to the machines in your Kubernetes cluster (see the [Motivation](#motivation) section for more details).
 1. Run: `terraform init` to initialize Terraform.
