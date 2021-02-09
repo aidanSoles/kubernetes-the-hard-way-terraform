@@ -69,3 +69,4 @@ variable "zone_map" {
     "2" = "c"
   }
 }
+

@@ -3,29 +3,45 @@ resource "google_compute_instance" "k8s_controller" {
     auto_delete = true
 
     initialize_params {
-      image = "${var.controller_image}"
-      size  = "${var.controller_size}"
+      image = var.controller_image
+      size  = var.controller_size
     }
   }
 
   can_ip_forward = true
-  count          = "${var.controller_count}"
-  machine_type   = "${var.controller_type}"
+  count          = var.controller_count
+  machine_type   = var.controller_type
   name           = "k8s-controller${count.index}"
 
   network_interface {
-    access_config = {}
-    subnetwork    = "${google_compute_subnetwork.k8s_subnet.name}"
+    access_config {
+    }
+    subnetwork = google_compute_subnetwork.k8s_subnet.name
   }
 
-  metadata {
-    creator = "${var.user}"
+  metadata = {
+    creator = var.user
   }
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -35,8 +51,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -46,8 +77,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -57,8 +103,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -68,8 +129,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -79,8 +155,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -90,8 +181,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -101,8 +207,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -112,8 +233,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -123,8 +259,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -134,8 +285,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -145,8 +311,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -156,8 +337,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -167,8 +363,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -178,8 +389,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -189,8 +415,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -200,8 +441,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -211,8 +467,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -222,8 +493,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -233,8 +519,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -244,8 +545,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -255,8 +571,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -266,8 +597,23 @@ resource "google_compute_instance" "k8s_controller" {
 
   provisioner "remote-exec" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -291,7 +637,7 @@ resource "google_compute_instance" "k8s_controller" {
   }
 
   tags = ["controller"]
-  zone = "${var.region}-${lookup(var.zone_map, count.index)}"
+  zone = "${var.region}-${var.zone_map[count.index]}"
 }
 
 resource "google_compute_instance" "k8s_worker" {
@@ -299,30 +645,46 @@ resource "google_compute_instance" "k8s_worker" {
     auto_delete = true
 
     initialize_params {
-      image = "${var.worker_image}"
-      size  = "${var.worker_size}"
+      image = var.worker_image
+      size  = var.worker_size
     }
   }
 
   can_ip_forward = true
-  count          = "${var.worker_count}"
-  machine_type   = "${var.worker_type}"
+  count          = var.worker_count
+  machine_type   = var.worker_type
   name           = "k8s-worker${count.index}"
 
   network_interface {
-    access_config = {}
-    subnetwork    = "${google_compute_subnetwork.k8s_subnet.name}"
+    access_config {
+    }
+    subnetwork = google_compute_subnetwork.k8s_subnet.name
   }
 
-  metadata {
-    creator  = "${var.user}"
+  metadata = {
+    creator  = var.user
     pod-cidr = "10.200.${count.index}.0/24"
   }
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -332,8 +694,23 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -343,8 +720,23 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -354,8 +746,23 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -365,8 +772,23 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -376,8 +798,23 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -387,8 +824,23 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -398,8 +850,23 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -409,8 +876,23 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -420,8 +902,23 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -431,8 +928,23 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -446,8 +958,23 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "file" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -457,8 +984,23 @@ resource "google_compute_instance" "k8s_worker" {
 
   provisioner "remote-exec" {
     connection {
-      private_key = "${file(var.ssh_path)}"
-      user        = "${var.user}"
+      host = coalesce( # TF-UPGRADE-TODO: Simplify this to reference a specific desired IP address, if possible.
+        concat(
+          # Prefer any available NAT IP address
+          flatten([
+            for ni in self.network_interface : [
+              for ac in ni.access_config : ac.nat_ip
+            ]
+          ]),
+
+          # Otherwise, use the first available LAN IP address
+          [
+            for ni in self.network_interface : ni.network_ip
+          ],
+        )...
+      )
+      private_key = file(var.ssh_path)
+      user        = var.user
       type        = "ssh"
     }
 
@@ -475,5 +1017,6 @@ resource "google_compute_instance" "k8s_worker" {
   }
 
   tags = ["worker"]
-  zone = "${var.region}-${lookup(var.zone_map, count.index)}"
+  zone = "${var.region}-${var.zone_map[count.index]}"
 }
+
